@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PullToRefreshLayout">
+        <attr name="blockScrollWhileRefreshing" format="boolean" />
+
+        <attr name="refreshIconDrawable" format="reference" />
+        <attr name="refreshIconSpinDuration" format="integer" />
+        <attr name="refreshIconColor" format="color" />
+        <attr name="refreshIconSize" format="dimension" />
+
+        <attr name="refreshLayoutBackgroundColor" format="color" />
+        <attr name="refreshLayoutPadding" format="dimension" />
+        <attr name="refreshLayoutMaxHeight" format="dimension" />
+        <attr name="refreshLayoutThresholdHeight" format="dimension" />
+    </declare-styleable>
+</resources>

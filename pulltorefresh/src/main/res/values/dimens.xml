@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="refresh_icon_size">24dp</dimen>
+    <dimen name="refresh_layout_padding">4dp</dimen>
+</resources>

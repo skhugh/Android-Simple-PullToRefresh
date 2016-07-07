@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.skhugh.simplepulltorefresh.samples..MultiplePullToRefreshActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintCenterX_toCenterX="@+id/constraintLayout"/>
+
+    <com.skhugh.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pulltorefresh1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:refreshIconSize="30dp"
+        app:refreshIconSpinDuration="1000"
+        app:refreshLayoutBackgroundColor="@android:color/background_light"
+        app:refreshLayoutMaxHeight="100dp"
+        app:refreshLayoutPadding="5dp"
+        app:refreshLayoutThresholdHeight="50dp"
+        app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintRight_toRightOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_margin="16dp">
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/androidm"
+            android:contentDescription="@string/dummy_image"
+            />
+    </com.skhugh.pulltorefresh.PullToRefreshLayout>
+
+    <com.skhugh.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pulltorefresh2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:refreshIconDrawable="@drawable/ic_donut_large_black_24dp"
+        app:refreshIconSize="36dp"
+        app:refreshIconSpinDuration="400"
+        app:refreshLayoutBackgroundColor="@android:color/darker_gray"
+        app:refreshLayoutMaxHeight="150dp"
+        app:refreshLayoutPadding="0dp"
+        app:refreshLayoutThresholdHeight="100dp"
+        app:layout_constraintLeft_toRightOf="@+id/pulltorefresh1"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintRight_toRightOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="1"
+        android:layout_margin="16dp">
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </com.skhugh.pulltorefresh.PullToRefreshLayout>
+</android.support.constraint.ConstraintLayout>
+

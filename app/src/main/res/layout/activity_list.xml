@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.skhugh.simplepulltorefresh.samples.ListActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+    <com.skhugh.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pulltorefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshIconColor="@color/colorPrimaryDark"
+        app:refreshIconSize="70dp"
+        app:refreshIconSpinDuration="500"
+        app:refreshLayoutBackgroundColor="@color/colorPrimary"
+        app:refreshLayoutMaxHeight="1000dp"
+        app:refreshLayoutPadding="0dp"
+        app:refreshLayoutThresholdHeight="100dp">
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:clipToPadding="true">
+        </ListView>
+    </com.skhugh.pulltorefresh.PullToRefreshLayout>
+</LinearLayout>
+
