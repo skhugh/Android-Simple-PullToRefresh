@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="PullToRefreshLayout">
+        <!-- Whether scrolling should be blocked while it is refreshing -->
         <attr name="blockScrollWhileRefreshing" format="boolean" />
 
+        <!-- Drawable to use as refreshing icon -->
         <attr name="refreshIconDrawable" format="reference" />
+
+        <!-- Duration for one full spin of the refresh icon -->
         <attr name="refreshIconSpinDuration" format="integer" />
+
+        <!-- Color to be used for the refresh icon. This is ignored if refreshIconDrawable is set -->
         <attr name="refreshIconColor" format="color" />
+
+        <!-- Size of the refresh icon -->
         <attr name="refreshIconSize" format="dimension" />
 
+        <!-- Color for the refresh layout background -->
         <attr name="refreshLayoutBackgroundColor" format="color" />
+
+        <!-- Padding for the refresh layout -->
         <attr name="refreshLayoutPadding" format="dimension" />
+
+        <!-- Max height of the refresh layout -->
         <attr name="refreshLayoutMaxHeight" format="dimension" />
+
+        <!-- Threshold height of the refresh layout to start refreshing -->
         <attr name="refreshLayoutThresholdHeight" format="dimension" />
     </declare-styleable>
 </resources>

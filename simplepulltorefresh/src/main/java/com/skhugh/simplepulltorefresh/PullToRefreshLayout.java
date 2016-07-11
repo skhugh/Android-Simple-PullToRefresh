@@ -249,13 +249,23 @@ public class PullToRefreshLayout extends FrameLayout implements ChildViewTopMarg
     }
 
     @Override
-    public boolean isRefreshing() {
-        return refreshing;
+    public void setRefreshLayoutMaxHeight(int refreshLayoutMaxHeight) {
+        this.refreshLayoutMaxHeight = refreshLayoutMaxHeight;
+    }
+
+    @Override
+    public void setRefreshLayoutThresholdHeight(int refreshLayoutThresholdHeight) {
+        this.refreshLayoutThresholdHeight = refreshLayoutThresholdHeight;
     }
 
     @Override
     public void setBlockScrollWhileRefreshing(boolean blockScrollWhileRefreshing) {
         this.blockScrollWhileRefreshing = blockScrollWhileRefreshing;
+    }
+
+    @Override
+    public boolean isRefreshing() {
+        return refreshing;
     }
 
     @Override

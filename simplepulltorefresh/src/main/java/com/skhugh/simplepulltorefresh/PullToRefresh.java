@@ -90,11 +90,20 @@ public interface PullToRefresh {
     void setRefreshIcon(@NonNull RefreshIcon refreshIcon);
 
     /**
-     * Returns whether PullToRefreshLayout is refreshing.
+     * Sets max height of the refresh layout.
+     * Default value is 500dp.
      *
-     * @return true if PullToRefreshLayout is currently refreshing
+     * @param refreshLayoutMaxHeight max height of the refresh layout in dp.
      */
-    boolean isRefreshing();
+    void setRefreshLayoutMaxHeight(int refreshLayoutMaxHeight);
+
+    /**
+     * Sets threshold height of the refresh layout to start refreshing.
+     * Default value is 300dp.
+     *
+     * @param refreshLayoutThresholdHeight threshold height of the refresh layout in dp.
+     */
+    void setRefreshLayoutThresholdHeight(int refreshLayoutThresholdHeight);
 
     /**
      * Sets whether to block user-driven scroll event while refreshing.
@@ -103,6 +112,13 @@ public interface PullToRefresh {
      * @param blockScrollWhileRefreshing true to block scroll
      */
     void setBlockScrollWhileRefreshing(boolean blockScrollWhileRefreshing);
+
+    /**
+     * Returns whether PullToRefreshLayout is refreshing.
+     *
+     * @return true if PullToRefreshLayout is currently refreshing
+     */
+    boolean isRefreshing();
 
     /**
      * Notifies {@link PullToRefreshLayout} when refresh is done.
