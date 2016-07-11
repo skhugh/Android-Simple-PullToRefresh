@@ -21,11 +21,12 @@ package com.skhugh.simplepulltorefresh;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.skhugh.simplepulltorefresh.refreshicon.DefaultRefreshIcon;
 import com.skhugh.simplepulltorefresh.refreshicon.RefreshIcon;
 
-public interface PullToRefresh {
+public interface PullToRefreshStyler {
     /**
      * Sets pullToRefreshListener which implements {@link PullToRefreshListener}.
      * This is used to notify when the refresh task should be started.
@@ -80,7 +81,7 @@ public interface PullToRefresh {
      *
      * @param refreshIconDrawable drawable to be used for the refresh icon
      */
-    void setRefreshIconDrawable(@NonNull Drawable refreshIconDrawable);
+    void setRefreshIconDrawable(@Nullable Drawable refreshIconDrawable);
 
     /**
      * Sets custom view for the refresh icon.
@@ -93,17 +94,17 @@ public interface PullToRefresh {
      * Sets max height of the refresh layout.
      * Default value is 500dp.
      *
-     * @param refreshLayoutMaxHeight max height of the refresh layout in dp.
+     * @param refreshLayoutMaxHeightInPx max height of the refresh layout in px.
      */
-    void setRefreshLayoutMaxHeight(int refreshLayoutMaxHeight);
+    void setRefreshLayoutMaxHeight(int refreshLayoutMaxHeightInPx);
 
     /**
      * Sets threshold height of the refresh layout to start refreshing.
      * Default value is 300dp.
      *
-     * @param refreshLayoutThresholdHeight threshold height of the refresh layout in dp.
+     * @param refreshLayoutThresholdHeightInPx threshold height of the refresh layout in px.
      */
-    void setRefreshLayoutThresholdHeight(int refreshLayoutThresholdHeight);
+    void setRefreshLayoutThresholdHeight(int refreshLayoutThresholdHeightInPx);
 
     /**
      * Sets whether to block user-driven scroll event while refreshing.
@@ -112,16 +113,4 @@ public interface PullToRefresh {
      * @param blockScrollWhileRefreshing true to block scroll
      */
     void setBlockScrollWhileRefreshing(boolean blockScrollWhileRefreshing);
-
-    /**
-     * Returns whether PullToRefreshLayout is refreshing.
-     *
-     * @return true if PullToRefreshLayout is currently refreshing
-     */
-    boolean isRefreshing();
-
-    /**
-     * Notifies {@link PullToRefreshLayout} when refresh is done.
-     */
-    void refreshDone();
 }

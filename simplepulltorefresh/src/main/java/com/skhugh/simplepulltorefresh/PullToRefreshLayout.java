@@ -24,6 +24,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -41,7 +42,7 @@ import com.skhugh.simplepulltorefresh.refreshicon.RefreshIconFactory;
 
 import java.lang.ref.WeakReference;
 
-public class PullToRefreshLayout extends FrameLayout implements ChildViewTopMarginCalculator, PullToRefresh {
+public class PullToRefreshLayout extends FrameLayout implements ChildViewTopMarginCalculator, PullToRefreshStyler {
     private static final String TAG = "PullToRefreshLayout";
 
     private static final int DEFAULT_REFRESH_ICON_SPIN_DURATION = 800;
@@ -189,6 +190,25 @@ public class PullToRefreshLayout extends FrameLayout implements ChildViewTopMarg
         refreshLayout.addView(refreshIcon.getIconView());
     }
 
+    /**
+     * Returns whether PullToRefreshLayout is refreshing.
+     *
+     * @return true if PullToRefreshLayout is currently refreshing
+     */
+    public boolean isRefreshing() {
+        return refreshing;
+    }
+
+    /**
+     * Notifies {@link PullToRefreshLayout} when refresh is done.
+     */
+    public void refreshDone() {
+        if (refreshing) {
+            animateRefreshLayout(0);
+            refreshing = false;
+        }
+    }
+
     @Override
     public void setPullToRefreshListener(@NonNull PullToRefreshListener pullToRefreshListener) {
         refreshDone();
@@ -236,7 +256,7 @@ public class PullToRefreshLayout extends FrameLayout implements ChildViewTopMarg
     }
 
     @Override
-    public void setRefreshIconDrawable(@NonNull Drawable refreshIconDrawable) {
+    public void setRefreshIconDrawable(@Nullable Drawable refreshIconDrawable) {
         this.refreshIconDrawable = refreshIconDrawable;
         createRefreshIcon();
     }
@@ -249,31 +269,18 @@ public class PullToRefreshLayout extends FrameLayout implements ChildViewTopMarg
     }
 
     @Override
-    public void setRefreshLayoutMaxHeight(int refreshLayoutMaxHeight) {
-        this.refreshLayoutMaxHeight = refreshLayoutMaxHeight;
+    public void setRefreshLayoutMaxHeight(int refreshLayoutMaxHeightInPx) {
+        this.refreshLayoutMaxHeight = refreshLayoutMaxHeightInPx;
     }
 
     @Override
-    public void setRefreshLayoutThresholdHeight(int refreshLayoutThresholdHeight) {
-        this.refreshLayoutThresholdHeight = refreshLayoutThresholdHeight;
+    public void setRefreshLayoutThresholdHeight(int refreshLayoutThresholdHeightInPx) {
+        this.refreshLayoutThresholdHeight = refreshLayoutThresholdHeightInPx;
     }
 
     @Override
     public void setBlockScrollWhileRefreshing(boolean blockScrollWhileRefreshing) {
         this.blockScrollWhileRefreshing = blockScrollWhileRefreshing;
-    }
-
-    @Override
-    public boolean isRefreshing() {
-        return refreshing;
-    }
-
-    @Override
-    public void refreshDone() {
-        if (refreshing) {
-            animateRefreshLayout(0);
-            refreshing = false;
-        }
     }
 
     private void saveInitialStateOfChildView() {
