@@ -17,11 +17,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh;
+package com.skhugh.simplepulltorefresh.refreshicon;
 
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.view.View;
 
-public interface PullToRefreshListener {
-    void onStartRefresh(@Nullable View view);
+public interface RefreshIcon {
+    @NonNull
+    View getIconView();
+    void setProgress(float progress);
+    void spin();
+    void setSpinSpeed(int spinSpeed);
+    boolean isSpinning();
 }

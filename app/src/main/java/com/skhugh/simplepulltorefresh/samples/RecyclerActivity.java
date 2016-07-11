@@ -34,8 +34,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.skhugh.pulltorefresh.PullToRefreshListener;
-import com.skhugh.pulltorefresh.PullToRefreshLayout;
+import com.skhugh.simplepulltorefresh.PullToRefreshListener;
+import com.skhugh.simplepulltorefresh.PullToRefreshLayout;
 
 public class RecyclerActivity extends AppCompatActivity implements PullToRefreshListener {
     private PullToRefreshLayout pullToRefreshLayout;

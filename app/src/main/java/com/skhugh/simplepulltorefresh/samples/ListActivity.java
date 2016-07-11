@@ -23,6 +23,7 @@ import android.content.Context;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -34,8 +35,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.skhugh.pulltorefresh.PullToRefreshListener;
-import com.skhugh.pulltorefresh.PullToRefreshLayout;
+import com.skhugh.simplepulltorefresh.PullToRefreshListener;
+import com.skhugh.simplepulltorefresh.PullToRefreshLayout;
 
 public class ListActivity extends AppCompatActivity implements PullToRefreshListener {
     private PullToRefreshLayout pullToRefreshLayout;

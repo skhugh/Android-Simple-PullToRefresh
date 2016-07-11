@@ -17,7 +17,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh.refreshicon;
+package com.skhugh.simplepulltorefresh.refreshicon;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

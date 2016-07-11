@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
-    <com.skhugh.pulltorefresh.PullToRefreshLayout
+    <com.skhugh.simplepulltorefresh.PullToRefreshLayout
         android:id="@+id/pulltorefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,6 +37,6 @@
             android:background="@android:color/white"
             android:clipToPadding="true">
         </ListView>
-    </com.skhugh.pulltorefresh.PullToRefreshLayout>
+    </com.skhugh.simplepulltorefresh.PullToRefreshLayout>
 </LinearLayout>
 

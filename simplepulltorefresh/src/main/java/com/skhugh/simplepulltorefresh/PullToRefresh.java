@@ -17,13 +17,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh;
+package com.skhugh.simplepulltorefresh;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 
-import com.skhugh.pulltorefresh.refreshicon.DefaultRefreshIcon;
-import com.skhugh.pulltorefresh.refreshicon.RefreshIcon;
+import com.skhugh.simplepulltorefresh.refreshicon.DefaultRefreshIcon;
+import com.skhugh.simplepulltorefresh.refreshicon.RefreshIcon;
 
 public interface PullToRefresh {
     /**

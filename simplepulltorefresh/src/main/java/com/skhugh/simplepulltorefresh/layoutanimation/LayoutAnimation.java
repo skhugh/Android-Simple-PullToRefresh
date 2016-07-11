@@ -17,20 +17,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh.refreshicon;
+package com.skhugh.simplepulltorefresh.layoutanimation;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.animation.Animation;
 
-public abstract class RefreshIconFactory {
-    public static RefreshIcon createRefreshIcon(@NonNull Context context, int refreshIconColor, int refreshIconSize,
-            int refreshIconSpinDuration, @Nullable Drawable refreshIconDrawable) {
-        if (refreshIconDrawable == null)
-            return new DefaultRefreshIcon(context, refreshIconColor, refreshIconSize, refreshIconSpinDuration);
-        else
-            return new DrawableRefreshIcon(context, refreshIconDrawable, refreshIconSize, refreshIconSpinDuration);
+import com.skhugh.simplepulltorefresh.ChildViewTopMarginCalculator;
+
+import java.lang.ref.WeakReference;
+
+abstract class LayoutAnimation extends Animation {
+    private static final int DEFAULT_REFRESH_LAYOUT_ANIMATION_DURATION = 300;
+
+    WeakReference<View> targetViewWeakRef;
+    WeakReference<ChildViewTopMarginCalculator> childViewTopMarginCalculatorWeakRef;
+    int refreshLayoutHeight;
+
+    LayoutAnimation(ChildViewTopMarginCalculator childViewTopMarginCalculator, View targetView,
+            int refreshLayoutHeight) {
+        childViewTopMarginCalculatorWeakRef = new WeakReference<>(childViewTopMarginCalculator);
+        targetViewWeakRef = new WeakReference<>(targetView);
+        this.refreshLayoutHeight = refreshLayoutHeight;
+        setDuration(DEFAULT_REFRESH_LAYOUT_ANIMATION_DURATION);
+    }
+
+    @Override
+    public boolean willChangeBounds() {
+        return true;
     }
 }
 

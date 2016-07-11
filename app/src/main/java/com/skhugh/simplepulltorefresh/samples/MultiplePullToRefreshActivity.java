@@ -26,6 +26,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -38,9 +39,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.skhugh.pulltorefresh.PullToRefreshListener;
-import com.skhugh.pulltorefresh.PullToRefreshLayout;
-import com.skhugh.pulltorefresh.refreshicon.RefreshIcon;
+import com.skhugh.simplepulltorefresh.PullToRefreshListener;
+import com.skhugh.simplepulltorefresh.PullToRefreshLayout;
+import com.skhugh.simplepulltorefresh.refreshicon.RefreshIcon;
 
 public class MultiplePullToRefreshActivity extends AppCompatActivity implements PullToRefreshListener {
     private PullToRefreshLayout pullToRefreshLayout1;

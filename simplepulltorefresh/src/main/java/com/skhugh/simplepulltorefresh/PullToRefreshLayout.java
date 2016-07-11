@@ -17,7 +17,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh;
+package com.skhugh.simplepulltorefresh;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -33,11 +33,11 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.skhugh.pulltorefresh.layoutanimation.ChildViewAnimation;
-import com.skhugh.pulltorefresh.layoutanimation.RefreshLayoutAnimation;
-import com.skhugh.pulltorefresh.refreshicon.DefaultRefreshIcon;
-import com.skhugh.pulltorefresh.refreshicon.RefreshIcon;
-import com.skhugh.pulltorefresh.refreshicon.RefreshIconFactory;
+import com.skhugh.simplepulltorefresh.layoutanimation.ChildViewAnimation;
+import com.skhugh.simplepulltorefresh.layoutanimation.RefreshLayoutAnimation;
+import com.skhugh.simplepulltorefresh.refreshicon.DefaultRefreshIcon;
+import com.skhugh.simplepulltorefresh.refreshicon.RefreshIcon;
+import com.skhugh.simplepulltorefresh.refreshicon.RefreshIconFactory;
 
 import java.lang.ref.WeakReference;
 

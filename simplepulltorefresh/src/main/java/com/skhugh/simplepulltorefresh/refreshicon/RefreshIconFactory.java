@@ -17,23 +17,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh.layoutanimation;
+package com.skhugh.simplepulltorefresh.refreshicon;
 
-import android.view.View;
-import android.view.animation.Transformation;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-import com.skhugh.pulltorefresh.ChildViewTopMarginCalculator;
-
-public class RefreshLayoutAnimation extends LayoutAnimation {
-    public RefreshLayoutAnimation(ChildViewTopMarginCalculator childViewTopMarginCalculator, View targetView,
-            int refreshLayoutHeight) {
-        super(childViewTopMarginCalculator, targetView, refreshLayoutHeight);
-    }
-
-    @Override
-    protected void applyTransformation(float interpolatedTime, Transformation t) {
-        targetViewWeakRef.get().getLayoutParams().height = childViewTopMarginCalculatorWeakRef.get()
-                .calculateNewTopMarginAtInterpolatedTime(refreshLayoutHeight,
-                        interpolatedTime) - childViewTopMarginCalculatorWeakRef.get().getInitialTopMargin();
+public abstract class RefreshIconFactory {
+    public static RefreshIcon createRefreshIcon(@NonNull Context context, int refreshIconColor, int refreshIconSize,
+            int refreshIconSpinDuration, @Nullable Drawable refreshIconDrawable) {
+        if (refreshIconDrawable == null)
+            return new DefaultRefreshIcon(context, refreshIconColor, refreshIconSize, refreshIconSpinDuration);
+        else
+            return new DrawableRefreshIcon(context, refreshIconDrawable, refreshIconSize, refreshIconSpinDuration);
     }
 }
+

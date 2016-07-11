@@ -17,25 +17,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh.layoutanimation;
+package com.skhugh.simplepulltorefresh.layoutanimation;
 
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Transformation;
 
-import com.skhugh.pulltorefresh.ChildViewTopMarginCalculator;
+import com.skhugh.simplepulltorefresh.ChildViewTopMarginCalculator;
 
-public class ChildViewAnimation extends LayoutAnimation {
-    public ChildViewAnimation(ChildViewTopMarginCalculator childViewTopMarginCalculator, View targetView,
+public class RefreshLayoutAnimation extends LayoutAnimation {
+    public RefreshLayoutAnimation(ChildViewTopMarginCalculator childViewTopMarginCalculator, View targetView,
             int refreshLayoutHeight) {
         super(childViewTopMarginCalculator, targetView, refreshLayoutHeight);
     }
 
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
-        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) targetViewWeakRef.get().getLayoutParams();
-        params.topMargin = childViewTopMarginCalculatorWeakRef.get()
-                .calculateNewTopMarginAtInterpolatedTime(refreshLayoutHeight, interpolatedTime);
-        targetViewWeakRef.get().setLayoutParams(params);
+        targetViewWeakRef.get().getLayoutParams().height = childViewTopMarginCalculatorWeakRef.get()
+                .calculateNewTopMarginAtInterpolatedTime(refreshLayoutHeight,
+                        interpolatedTime) - childViewTopMarginCalculatorWeakRef.get().getInitialTopMargin();
     }
 }

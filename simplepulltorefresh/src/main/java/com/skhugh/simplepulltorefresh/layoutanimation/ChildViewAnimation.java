@@ -17,9 +17,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh;
+package com.skhugh.simplepulltorefresh.layoutanimation;
 
-public interface ChildViewTopMarginCalculator {
-    int calculateNewTopMarginAtInterpolatedTime(int refreshLayoutHeight, float interpolatedTime);
-    int getInitialTopMargin();
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Transformation;
+
+import com.skhugh.simplepulltorefresh.ChildViewTopMarginCalculator;
+
+public class ChildViewAnimation extends LayoutAnimation {
+    public ChildViewAnimation(ChildViewTopMarginCalculator childViewTopMarginCalculator, View targetView,
+            int refreshLayoutHeight) {
+        super(childViewTopMarginCalculator, targetView, refreshLayoutHeight);
+    }
+
+    @Override
+    protected void applyTransformation(float interpolatedTime, Transformation t) {
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) targetViewWeakRef.get().getLayoutParams();
+        params.topMargin = childViewTopMarginCalculatorWeakRef.get()
+                .calculateNewTopMarginAtInterpolatedTime(refreshLayoutHeight, interpolatedTime);
+        targetViewWeakRef.get().setLayoutParams(params);
+    }
 }

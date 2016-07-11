@@ -17,33 +17,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh.layoutanimation;
+package com.skhugh.simplepulltorefresh;
 
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.animation.Animation;
 
-import com.skhugh.pulltorefresh.ChildViewTopMarginCalculator;
-
-import java.lang.ref.WeakReference;
-
-abstract class LayoutAnimation extends Animation {
-    private static final int DEFAULT_REFRESH_LAYOUT_ANIMATION_DURATION = 300;
-
-    WeakReference<View> targetViewWeakRef;
-    WeakReference<ChildViewTopMarginCalculator> childViewTopMarginCalculatorWeakRef;
-    int refreshLayoutHeight;
-
-    LayoutAnimation(ChildViewTopMarginCalculator childViewTopMarginCalculator, View targetView,
-            int refreshLayoutHeight) {
-        childViewTopMarginCalculatorWeakRef = new WeakReference<>(childViewTopMarginCalculator);
-        targetViewWeakRef = new WeakReference<>(targetView);
-        this.refreshLayoutHeight = refreshLayoutHeight;
-        setDuration(DEFAULT_REFRESH_LAYOUT_ANIMATION_DURATION);
-    }
-
-    @Override
-    public boolean willChangeBounds() {
-        return true;
-    }
+public interface PullToRefreshListener {
+    void onStartRefresh(@Nullable View view);
 }
-

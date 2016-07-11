@@ -20,6 +20,7 @@
 package com.skhugh.simplepulltorefresh.samples;
 
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -30,8 +31,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.skhugh.pulltorefresh.PullToRefreshListener;
-import com.skhugh.pulltorefresh.PullToRefreshLayout;
+import com.skhugh.simplepulltorefresh.PullToRefreshListener;
+import com.skhugh.simplepulltorefresh.PullToRefreshLayout;
 
 public class ScrollingActivity extends AppCompatActivity implements PullToRefreshListener {
     private PullToRefreshLayout pullToRefreshLayout;
@@ -90,7 +91,7 @@ public class ScrollingActivity extends AppCompatActivity implements PullToRefres
     }
 
     @Override
-    public void onStartRefresh(View view) {
+    public void onStartRefresh(View refreshView) {
         Snackbar.make(findViewById(R.id.scrollview), "started refreshing", Snackbar.LENGTH_INDEFINITE)
                 .setAction("finish", new View.OnClickListener() {
                     @Override

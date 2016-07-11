@@ -17,16 +17,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.skhugh.pulltorefresh.refreshicon;
+package com.skhugh.simplepulltorefresh;
 
-import android.support.annotation.NonNull;
-import android.view.View;
-
-public interface RefreshIcon {
-    @NonNull
-    View getIconView();
-    void setProgress(float progress);
-    void spin();
-    void setSpinSpeed(int spinSpeed);
-    boolean isSpinning();
+public interface ChildViewTopMarginCalculator {
+    int calculateNewTopMarginAtInterpolatedTime(int refreshLayoutHeight, float interpolatedTime);
+    int getInitialTopMargin();
 }

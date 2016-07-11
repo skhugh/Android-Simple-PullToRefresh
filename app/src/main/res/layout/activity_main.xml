@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.skhugh.simplepulltorefresh.samples..MainActivity">
+    tools:context="com.skhugh.simplepulltorefresh.samples.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
