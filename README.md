@@ -13,21 +13,21 @@ You can try the sample app from Google Play:
 
 [![Get it on Google Play](https://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.skhugh.simplepulltorefresh.samples)
 
-Or see the sample source code [here](https://github.com/skhugh/Android-SimplePullToRefresh/tree/master/app/src/main/java/com/skhugh/simplepulltorefresh/samples).
+Or see the sample source code [here](https://github.com/skhugh/Android-Simple-PullToRefresh/tree/master/app/src/main/java/com/skhugh/simplepulltorefresh/samples).
 
 ### Screenshots
 
 **Sample Using RecyclerView With Default Refresh Icon**  
 
-![Screenshot](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/screencapture/sample-recyclerview.gif?raw=true)  
+![Screenshot](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/screencapture/sample-recyclerview.gif?raw=true)  
 
 **Sample Using CoordinatorLayout With Custom Image As Refresh Icon**  
 
-![Screenshot](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/screencapture/sample-coordinatorlayout.gif?raw=true)  
+![Screenshot](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/screencapture/sample-coordinatorlayout.gif?raw=true)  
 
 **Sample Using ImageView & WebView With Custom Refresh Icon**  
 
-![Screenshot](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/screencapture/sample-imageview_webview.gif?raw=true)  
+![Screenshot](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/screencapture/sample-imageview_webview.gif?raw=true)  
 
 ## Download
 ### Gradle
@@ -50,12 +50,12 @@ dependencies {
 ```
 
 ### Source Files
-If you want, you can download the source code and add [simplepulltorefresh](https://github.com/skhugh/Android-SimplePullToRefresh/tree/master/simplepulltorefresh) module to your project.
+If you want, you can download the source code and add [simplepulltorefresh](https://github.com/skhugh/Android-Simple-PullToRefresh/tree/master/simplepulltorefresh) module to your project.
 
 
 ## Usage
 ### Wrap Your View
-Just simply wrap any view you want to add the pull-to-refresh function to with [PullToRefreshLayout](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshLayout.java) in layout XML as below.
+Just simply wrap any view you want to add the pull-to-refresh function to with [PullToRefreshLayout](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshLayout.java) in layout XML as below.
 
 ```xml
 <com.skhugh.simplepulltorefresh.PullToRefreshLayout
@@ -83,10 +83,10 @@ pullToRefreshLayout.addView(viewYouWantToHavePullToRefreshFunction);
 
 **PullToRefreshLayout** automatically adds the pull-to-refresh function to the first view that is added to it as a child view. If PullToRefreshLayout already has a child view, later added views are simply ignored.  
 
-Now we are done with the layout. Next, we need to add [PullToRefreshListener](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshListener.java) to **PullToRefreshLayout**.
+Now we are done with the layout. Next, we need to add [PullToRefreshListener](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshListener.java) to **PullToRefreshLayout**.
 
 ### Set The Interface
-[PullToRefreshListener](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshListener.java) has **onStartRefresh** method that tells you when you should start refreshing.
+[PullToRefreshListener](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshListener.java) has **onStartRefresh** method that tells you when you should start refreshing.
 
 ```java
 PullToRefreshLayout pullToRefreshLayout = (PullToRefreshLayout) findViewById(R.id.pulltorefresh);
@@ -118,7 +118,7 @@ private class DoSomeTask extends AsyncTask<Void, Void, Void> {
 ```
 
 That's it. Now we have a fully functional pull-to-refresh function added to your view.  
-If you want some styles changed, please check the [Customization](https://github.com/skhugh/Android-SimplePullToRefresh#customization) seciton.
+If you want some styles changed, please check the [Customization](https://github.com/skhugh/Android-Simple-PullToRefresh#customization) seciton.
 
 
 ## Customization
@@ -137,7 +137,7 @@ There are some XML attributes you can use to customize **PullToRefreshLayout**. 
 * **refreshLayoutMaxHeight** - Max height of the refresh layout. Default value is **500** dp.
 * **refreshLayoutThresholdHeight** - Threshold height of the refresh layout to start refreshing in DP. Default value is **300** dp.
 
-You can also check [attrs.xml](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/simplepulltorefresh/src/main/res/values/attrs.xml) for the list of attributes, and example of using these attributes at [activity_list.xml](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/app/src/main/res/layout/activity_list.xml).
+You can also check [attrs.xml](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/simplepulltorefresh/src/main/res/values/attrs.xml) for the list of attributes, and example of using these attributes at [activity_list.xml](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/app/src/main/res/layout/activity_list.xml).
 
 ### JAVA methods
 All XML attributes have its corresponding Setters. You can call these methods programmatically at any time.
@@ -151,12 +151,12 @@ All XML attributes have its corresponding Setters. You can call these methods pr
 * **setRefreshLayoutMaxHeight**(int refreshLayoutThresholdHeightInPx)
 * **setRefreshLayoutThresholdHeight**(int refreshLayoutThresholdHeightInPx)
 
-You can also check [PullToRefreshStyler](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshStyler.java) interface for the list of methods, and example of usage at [ScrollingActivity.java](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/app/src/main/java/com/skhugh/simplepulltorefresh/samples/ScrollingActivity.java).
+You can also check [PullToRefreshStyler](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshStyler.java) interface for the list of methods, and example of usage at [ScrollingActivity.java](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/app/src/main/java/com/skhugh/simplepulltorefresh/samples/ScrollingActivity.java).
 
 
 ## Advanced Customization
 You can use your own view for the refresh icon.  
-Just simply pass the implementation of [RefreshIcon](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/refreshicon/RefreshIcon.java) to [PullToRefreshLayout](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshLayout.java)'s **setRefreshIcon** method.  
+Just simply pass the implementation of [RefreshIcon](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/refreshicon/RefreshIcon.java) to [PullToRefreshLayout](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/simplepulltorefresh/src/main/java/com/skhugh/simplepulltorefresh/PullToRefreshLayout.java)'s **setRefreshIcon** method.  
 **RefreshIcon** interface has a **getIconView** method which returns a **View** type.   
 Here, you can return your own view to be used as the refresh icon.  
 Also, there are methods you can implement to define the refresh icon's behavior and styles.
@@ -212,7 +212,7 @@ pullToRefreshLayout.setRefreshIcon(new CustomRefreshIcon());
 
 ```
 
-Or look at [MultiplePullToRefreshActivity.java](https://github.com/skhugh/Android-SimplePullToRefresh/blob/master/app/src/main/java/com/skhugh/simplepulltorefresh/samples/MultiplePullToRefreshActivity.java) file.
+Or look at [MultiplePullToRefreshActivity.java](https://github.com/skhugh/Android-Simple-PullToRefresh/blob/master/app/src/main/java/com/skhugh/simplepulltorefresh/samples/MultiplePullToRefreshActivity.java) file.
 
 
 ## Acknowledgement
