@@ -45,7 +45,7 @@ Next, add the dependency to your **app**'s *build.gradle* file.
 
 ```
 dependencies {
-  compile 'com.skhugh.simplepulltorefresh:simplepulltorefresh:1.0.1'
+  compile 'com.skhugh.simplepulltorefresh:simplepulltorefresh:1.0.2'
 }
 ```
 
