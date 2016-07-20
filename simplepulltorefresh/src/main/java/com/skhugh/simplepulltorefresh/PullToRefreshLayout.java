@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -31,7 +32,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.skhugh.simplepulltorefresh.layoutanimation.ChildViewAnimation;
@@ -328,25 +331,35 @@ public class PullToRefreshLayout extends FrameLayout implements ChildViewTopMarg
     private class ChildViewOnTouchListener implements OnTouchListener {
         private boolean isDown = false;
         private float prevY = 0;
+        AdapterView.OnItemClickListener itemClickListener;
+        AdapterView.OnItemLongClickListener itemLongClickListener;
+        AdapterView.OnItemSelectedListener itemSelectedListener;
 
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (refreshing)
+            if (refreshing) {
                 return blockScrollWhileRefreshing;
+            }
 
-            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                isDown = true;
-            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 if (isDown) {
                     startRefreshingOrRestoreToInitialState();
                     isDown = false;
+                    prevY = 0;
+
+                    restoreItemClickListeners(view);
                 }
-            } else if (motionEvent.getAction() == MotionEvent.ACTION_MOVE && isDown) {
+            } else if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
                 if (view.getScrollY() == 0 && !view.canScrollVertically(-1)) {
                     int[] location = new int[2];
                     view.getLocationInWindow(location);
 
                     if (isRefreshLayoutInInitialState(location)) {
+                        if(!isDown) {
+                           saveItemClickListeners(view);
+                        }
+
+                        isDown = true;
                         moveRefreshLayout(view, motionEvent.getRawY());
                         prevY = motionEvent.getRawY();
 
@@ -418,6 +431,48 @@ public class PullToRefreshLayout extends FrameLayout implements ChildViewTopMarg
 
         private boolean shouldNotPassTouchEventToParent() {
             return getChildViewMarginLayoutParams().topMargin != initialChildViewMarginTop;
+        }
+
+        private void saveItemClickListeners(View view) {
+            if(view instanceof AdapterView) {
+                AdapterView adapterView = (AdapterView) view;
+                AdapterView.OnItemClickListener itemClickListener = adapterView.getOnItemClickListener();
+                AdapterView.OnItemLongClickListener itemLongClickListener = adapterView.getOnItemLongClickListener();
+                AdapterView.OnItemSelectedListener itemSelectedListener = adapterView.getOnItemSelectedListener();
+
+                if(itemClickListener != null) {
+                    this.itemClickListener = itemClickListener;
+                    adapterView.setOnItemClickListener(null);
+                }
+                if(itemLongClickListener != null) {
+                    this.itemLongClickListener = itemLongClickListener;
+                    adapterView.setOnItemLongClickListener(null);
+                }
+                if(itemSelectedListener  != null) {
+                    this.itemSelectedListener = itemSelectedListener;
+                    adapterView.setOnItemSelectedListener(null);
+                }
+            }
+        }
+
+        private void restoreItemClickListeners(View view) {
+            if(view instanceof AdapterView) {
+                final AdapterView adapterView = (AdapterView) view;
+
+                Handler handler = new Handler();
+                final Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        if(itemClickListener != null)
+                            adapterView.setOnItemClickListener(itemClickListener);
+                        if(itemLongClickListener != null)
+                            adapterView.setOnItemLongClickListener(itemLongClickListener);
+                        if(itemSelectedListener  != null)
+                            adapterView.setOnItemSelectedListener(itemSelectedListener);
+                    }
+                };
+                handler.postDelayed(runnable, 10);
+            }
         }
     }
 }

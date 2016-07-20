@@ -23,7 +23,7 @@ import android.content.Context;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -31,12 +31,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.skhugh.simplepulltorefresh.PullToRefreshListener;
 import com.skhugh.simplepulltorefresh.PullToRefreshLayout;
+import com.skhugh.simplepulltorefresh.PullToRefreshListener;
 
 public class ListActivity extends AppCompatActivity implements PullToRefreshListener {
     private PullToRefreshLayout pullToRefreshLayout;
@@ -53,7 +54,13 @@ public class ListActivity extends AppCompatActivity implements PullToRefreshList
         adapter = new DummyAdapter(this);
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                new AlertDialog.Builder(ListActivity.this).setMessage("item clicked")
+                        .setCancelable(true).create().show();
+            }
+        });
         setUpPullToRefreshLayout();
     }
 

@@ -23,6 +23,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,8 +35,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.skhugh.simplepulltorefresh.PullToRefreshListener;
 import com.skhugh.simplepulltorefresh.PullToRefreshLayout;
+import com.skhugh.simplepulltorefresh.PullToRefreshListener;
 
 public class RecyclerActivity extends AppCompatActivity implements PullToRefreshListener {
     private PullToRefreshLayout pullToRefreshLayout;
@@ -113,6 +114,15 @@ public class RecyclerActivity extends AppCompatActivity implements PullToRefresh
         @Override
         public DummyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(context).inflate(R.layout.dummy_recycler_item, parent, false);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new AlertDialog.Builder(RecyclerActivity.this).setMessage("item clicked")
+                            .setCancelable(true).create().show();
+                }
+            });
+
             return new DummyViewHolder(view, (TextView) view.findViewById(R.id.text_view));
         }
 
